@@ -4,7 +4,9 @@ services:
     build:
       context: src/prom-demo
     ports:
-      - 8877:8080
+      - 8872:8082
+      - 8873:8083
+      - 8877:8085
   postgres:
     image: postgres:16.3
     restart: always
@@ -22,6 +24,7 @@ services:
       DATA_SOURCE_NAME: postgresql://grafana:ii2eejaesahGheiJ@postgres:5432/postgres?sslmode=disable
   prometheus:
     image: prom/prometheus:v2.52.0
+    user: root
     restart: always
     ports:
       - 8879:9090
